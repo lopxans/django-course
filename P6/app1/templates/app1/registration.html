@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f5f9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        form{
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 500px;
+            margin: 0 auto 40px auto;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        h2{
+            margin-top: 0;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        table{
+            width: 100%;
+        }
+        table tr td{
+            padding: 8px 0;
+        }
+
+        ul{
+            padding-left: 20px;
+        }
+        ul li{
+            margin-bottom: 8px;
+        }
+
+        input, select, textarea{
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        button{
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover{
+            background: #0056c7;
+        }
+
+        /* bottom right blue login text */
+        .login-link{
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .login-link a{
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover{
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Student Registration</h1>
+
+    <!-- Default -->
+    <form>
+        <h2>Default Div Tag</h2>
+        {{forms}}
+        <button>Submit</button>
+
+        <div class="login-link">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </form>
+
+    <!-- table -->
+    <form>
+        <h2>Table</h2>
+        <table>
+            {{forms.as_table}}
+        </table>
+        <button>Submit</button>
+
+        <div class="login-link">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </form>
+
+    <!-- ul -->
+    <form>
+        <h2>UL</h2>
+        <ul>
+            {{forms.as_ul}}
+        </ul>
+        <button>Submit</button>
+
+        <div class="login-link">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </form>
+
+    <!-- p -->
+    <form>
+        <h2>P Tag</h2>
+        {{forms.as_p}}
+        <button>Submit</button>
+
+        <div class="login-link">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </form>
+
+    <!-- specific -->
+    <form>
+        <h2>Specific Input</h2>
+        {{forms.first_name}}
+        {{forms.last_name}}
+        <button>Submit</button>
+
+        <div class="login-link">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}My Django App{% endblock %}</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    padding-top: 70px;
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Navbar icons container */
+.nav-link {
+    position: relative;
+    width: 50px;
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+}
+
+/* Dropdown-like label box */
+.nav-link .link-label {
+    position: absolute;
+    top: 100%; /* below the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, top 0.3s;
+    z-index: 10;
+}
+
+/* Small arrow below the label */
+.nav-link .link-label::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #000 transparent;
+}
+
+/* Show label on hover */
+.nav-link:hover .link-label {
+    opacity: 1;
+    visibility: visible;
+    top: 110%; /* slightly move down */
+}
+
+/* Optional icon hover effect */
+.nav-link i {
+    transition: transform 0.2s;
+}
+
+.nav-link:hover i {
+    transform: scale(1.2);
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><i class="fa-solid fa-dove"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="fa-solid fa-house"></i> 
+                        <div class="link-label">Home</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user' %}">
+                        <i class="fa-solid fa-user"></i> 
+                        <div class="link-label">Users</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'page' %}">
+                        <i class="fa-solid fa-file"></i> 
+                        <div class="link-label">Pages</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post' %}">
+                        <i class="fa-solid fa-pen"></i> 
+                        <div class="link-label">Posts</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'song' %}">
+                        <i class="fa-solid fa-music"></i> 
+                        <div class="link-label">Songs</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
