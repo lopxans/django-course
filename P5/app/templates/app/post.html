@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">All Posts</h2>
+
+<div class="row">
+    {% for p in post %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ p.name }}</h5>
+
+                <p class="card-text">
+                    <strong>Category:</strong> {{ p.category }} <br>
+                    <strong>Published:</strong> {{ p.published }} <br>
+                    <strong>User:</strong> {{ p.user.username }}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
