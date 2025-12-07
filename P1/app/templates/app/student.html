@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Student Information</h1>
+
+    {% if student %}
+        {% if student|length %}
+            <!-- Student List Table -->
+            <table class="table table-striped table-hover shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">S.N.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Roll</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stu in student %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ stu.name }}</td>
+                        <td>{{ stu.roll }}</td>
+                        <td>{{ stu.email }}</td>
+                        <td>{{ stu.city }}</td>
+                        <td>
+                            <a href="{{ stu.id }}/" class="btn btn-sm btn-primary">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <!-- Single Student Detail -->
+            <div class="card mx-auto shadow-sm" style="max-width: 600px;">
+                <div class="card-body">
+                    <h3 class="card-title">{{ student.name }}</h3>
+                    <p class="card-text"><strong>Roll No:</strong> {{ student.roll }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ student.email }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ student.city }}</p>
+                    <a href="/" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-warning text-center" role="alert">
+            No students found.
+        </div>
+    {% endif %}
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
